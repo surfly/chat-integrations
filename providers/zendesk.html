@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Zendesk integration</title>
+    <style>
+        @font-face {
+            font-family: 'Inter-Loom';
+            src: url('https://cdn.loom.com/assets/fonts/inter/Inter-UI-Regular.woff2') format('woff2');
+        }
+
+        * {
+            font-family: 'Inter-Loom';
+        }
+
+        .container {
+            margin: 1% 20%;
+            background-color: white;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="logo_container">
+        <span class="logo_helper"></span>
+        <a href="https://www.surfly.com/">
+            <img src="https://cdn.shortpixel.ai/client/q_glossy,ret_img/https://www.surfly.com/wp-content/uploads/2018/06/surfly-red.png"
+                alt="Surfly" id="logo" width=10% height=10%>
+        </a>
+    </div>
+    <div class="container">
+        <h2 style="color:#e54747;" id="some_specific_text">How Zendesk integration works</h2>
+        <script>
+            (function (s, u, r, f, l, y) {
+                s[f] = s[f] || { init: function () { s[f].q = arguments } };
+                l = u.createElement(r); y = u.getElementsByTagName(r)[0]; l.async = 1;
+                l.src = 'https://surfly.com/surfly.js'; y.parentNode.insertBefore(l, y);
+            })
+                (window, document, 'script', 'Surfly');
+
+            var settings = {
+                widget_key: '24f023888ca9419484b74f10eca984b2',
+                chat_integration: 'olark',
+                confirm_session_start: false,
+                block_until_agent_joins: true,
+            };
+
+            Surfly.init(settings, function (initResult) {
+                if (initResult.success) {
+                    // API calls can now be made!
+                    if (!Surfly.isInsideSession) {
+                        var zendeskScript = document.createElement('script');
+                        zendeskScript.id = 'ze-snippet'
+                        zendeskScript.type = 'text/javascript'
+                        zendeskScript.src = "https://static.zdassets.com/ekr/snippet.js?key=fb706616-877f-4fa4-b09e-5481e688b6b0";
+
+                        zendeskScript.onload = () => {
+                            console.log("Zendesk loaded...")
+                        }
+
+                        document.body.appendChild(zendeskScript);
+                    }
+                }
+            })
+        </script>
+</body>
+
+</html>

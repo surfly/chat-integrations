@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Intercom integration</title>
+    <style>
+        @font-face {
+            font-family: 'Inter-Loom';
+            src: url('https://cdn.loom.com/assets/fonts/inter/Inter-UI-Regular.woff2') format('woff2');
+        }
+
+        * {
+            font-family: 'Inter-Loom';
+        }
+
+        .container {
+            margin: 1% 20%;
+            background-color: white;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="logo_container">
+        <span class="logo_helper"></span>
+        <a href="https://www.surfly.com/">
+            <img src="https://cdn.shortpixel.ai/client/q_glossy,ret_img/https://www.surfly.com/wp-content/uploads/2018/06/surfly-red.png"
+                alt="Surfly" id="logo" width=10% height=10% style="">
+        </a>
+    </div>
+    <div class="container">
+        <h2 style="color:#e54747;" id="some_specific_text">How Intercom integration works</h2>
+        <script>
+            (function (s, u, r, f, l, y) {
+                s[f] = s[f] || { init: function () { s[f].q = arguments } };
+                l = u.createElement(r); y = u.getElementsByTagName(r)[0]; l.async = 1;
+                l.src = 'https://surfly.com/surfly.js'; y.parentNode.insertBefore(l, y);
+            })
+                (window, document, 'script', 'Surfly');
+
+            var settings = {
+                widget_key: '24f023888ca9419484b74f10eca984b2',
+                chat_integration: 'intercom',
+                confirm_session_start: false,
+                block_until_agent_joins: true,
+            };
+
+            Surfly.init(settings, function (initResult) {
+                if (initResult.success) {
+                    if (!Surfly.isInsideSession) {
+                        console.log("Surfly was initialized successfully.")
+                    }
+                }
+                else {
+                    console.log("Surfly was unable to initialize properly.")
+                }
+            });
+        </script>
+
+        <script>
+
+            window.intercomSettings = {
+                app_id: "ptqoolgv"
+            };
+        </script>
+        <script>(function () { var w = window; var ic = w.Intercom; if (typeof ic === "function") { ic('reattach_activator'); ic('update', w.intercomSettings); } else { var d = document; var i = function () { i.c(arguments); }; i.q = []; i.c = function (args) { i.q.push(args); }; w.Intercom = i; var l = function () { var s = d.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = 'https://widget.intercom.io/widget/34243f4a3eeaeec18e497f2ab9d722b6fcd5957b'; var x = d.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x); }; if (w.attachEvent) { w.attachEvent('onload', l); } else { w.addEventListener('load', l, false); } } })();
+        </script>
+
+</body>
+
+</html>
